@@ -1,0 +1,33 @@
+{
+  "name": "electron-rust-wasm-demo",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cd rust_wasm && cargo +beta build --target wasm32-unknown-unknown && cd .. && wasm-bindgen rust_wasm/target/wasm32-unknown-unknown/debug/rust_web_flac.wasm --out-dir src/renderer && electron-webpack dev",
+    "compile": "cd rust_wasm && cargo +beta build --target wasm32-unknown-unknown --release && cd .. && wasm-bindgen rust_wasm/target/wasm32-unknown-unknown/release/rust_web_flac.wasm --out-dir src/renderer && electron-webpack",
+    "dist": "yarn compile && electron-builder",
+    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
+  },
+  "dependencies": {
+    "source-map-support": "^0.5.9"
+  },
+  "devDependencies": {
+    "electron": "^3.0",
+    "electron-builder": "^20.28.4",
+    "electron-webpack": "^2.3.1",
+    "webpack": "^4.20",
+    "vue": "^2.5",
+    "vue-loader": "^15.4",
+    "vue-template-compiler": "^2.5",
+    "vuetify": "^1.2",
+    "css-loader": "^1.0"
+  },
+  "resolutions": {
+    "upath": "^1.0.5"
+  },
+  "electronWebpack": {
+    "renderer": {
+      "webpackConfig": "webpack.renderer.additions.js"
+    }
+  }
+}

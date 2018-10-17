@@ -1,0 +1,8 @@
+.DS_Store
+dist/
+node_modules/
+thumbs.db
+.yarnclean
+rust_wasm/Cargo.lock
+rust_wasm/target
+src/renderer/rust_web_flac*
