@@ -37,7 +37,7 @@
                 </v-container>
             </v-content>
             <v-footer app fixed>
-                <span>&nbsp;&copy; 2017</span>
+                <span>&nbsp;&copy; {{currentYear}}</span>
             </v-footer>
         </v-app>
     </div>
@@ -53,6 +53,7 @@
             a: 0,
             b: 0,
             c: 0,
+            currentYear: (new Date()).getFullYear(),
             layout: 'sqrt-layout',
         }),
         props: {
