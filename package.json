@@ -9,18 +9,19 @@
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
   },
   "dependencies": {
-    "source-map-support": "^0.5.9"
+    "source-map-support": "^0.5.9",
+    "worker-loader": "^2.0.0"
   },
   "devDependencies": {
+    "css-loader": "^1.0",
     "electron": "^3.0",
     "electron-builder": "^20.28.4",
     "electron-webpack": "^2.3.1",
-    "webpack": "^4.20",
     "vue": "^2.5",
     "vue-loader": "^15.4",
     "vue-template-compiler": "^2.5",
     "vuetify": "^1.2",
-    "css-loader": "^1.0"
+    "webpack": "^4.20"
   },
   "resolutions": {
     "upath": "^1.0.5"

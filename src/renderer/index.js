@@ -7,6 +7,7 @@ require('./assets/material.css');
 require('./assets/custom.css');
 require('../../node_modules/vuetify/dist/vuetify.min.css');
 import Vuetify from 'vuetify'
+import Worker from './flac.worker.js';
 
 Vue.use(Vuetify);
 
@@ -15,8 +16,8 @@ new Vue({
     render: h => h(App),
 });
 
-const flac = import('./rust_web_flac');
-
-flac.then(function(result) {
-    document.body.flac = result;
+import('./rust_web_flac').then(function(flac) {
+    document.body.flac = flac;
 });
+
+document.body.Worker = Worker;

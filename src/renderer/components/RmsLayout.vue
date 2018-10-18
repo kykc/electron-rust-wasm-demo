@@ -9,13 +9,12 @@
     export default {
         methods: {
             calculate: function (event) {
-                let reader = new FileReader();
-                reader.onloadend = function(evt) {
-                    let result = document.body.flac.main(reader);
-                    alert("RMS: " + Number(result).toFixed(2).toString() + "dB");
+                var worker = new document.body.Worker();
+                worker.onmessage = function(e) {
+                    alert("RMS: " + Number(e.data).toFixed(2).toString() + "dB");
                 };
-
-                reader.readAsArrayBuffer(document.getElementById("flacFile").files[0]);
+                worker.postMessage([document.getElementById("flacFile").files[0], document.body.flac]);
+                //worker.postMessage(['zhopa']);
             }
         },
         name: "RmsLayout"

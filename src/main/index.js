@@ -3,14 +3,15 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import { format as formatUrl } from 'url';
-
+app.commandLine.appendSwitch('--enable-webassembly', true);
+app.commandLine.appendSwitch('enable-webassembly');
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
 let mainWindow;
 
 function createMainWindow() {
-  const window = new BrowserWindow();
+  const window = new BrowserWindow({'darkTheme': true, 'webPreferences': {'plugins': true, 'experimentalFeatures': true, 'additionalArguments': ['--enable-webassembly', 'enable-webassembly']}});
 
   if (isDevelopment) {
     window.webContents.openDevTools();
